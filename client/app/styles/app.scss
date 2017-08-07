@@ -1,0 +1,144 @@
+body{
+  font-family: 'Lora', serif;
+}
+.index-page{
+  background:
+  linear-gradient(
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0.5)
+    ),url('../images/docgenie-new9.jpg');
+  opacity: 0.9;
+  min-height: 100%;
+  padding: 2;
+  width: 100%;
+  max-width: 100%;
+}
+.main-nav{
+  background-color: #08B2E3;
+  padding:  0px 5px 0px 10px;
+  opacity: 1 !important;
+}
+.signin-button{
+  color: #C7AC5D;
+}
+.signup-form{
+  background-color: #ffffff;
+  opacity: 0.8;
+  padding: 15px !important;
+  border: 1px solid #ccc;
+}
+.signup-button{
+  color: #fff;
+  background-color: #291700;
+}
+.error-message{
+  color: #EE6352;
+  font-size: 15px;
+}
+.create-doc{
+  background-color: #EE6352 !important;
+  margin: 20px 0px 0px 0px;
+}
+.create-doc:hover{
+  background-color: #08B2E3;
+}
+.form-card-action a{
+  cursor: pointer;
+}
+.search-docs{
+  margin-top: 0px !important;
+}
+.pagination{
+  cursor: pointer;
+}
+.page-list{
+  background-color: #EE6352 !important;
+}
+.slideout-profile{
+  background-color: #ffffff !important;
+}
+.nav-logo{
+  background-color: #291700;
+}
+.brand-logo{
+  margin-left: 3%;
+}
+.nav-dropdown-content{
+  min-width: 12%;
+  margin-top: 5%;
+  background-color: #eee !important;
+  color: #000000 !important;
+}
+.nav-dropdown-list{
+  color: #000 !important;
+}
+.nav-drop-div button{
+  margin-left: 10%;
+  border-color: #fff;
+  color: #EE6352;
+  background-color: #fff;
+}
+.logout{
+  color: #EE6352;
+}
+.homeText{
+  color: #fff;
+  vertical-align: middle;
+}
+.homeText, .signInOrSignUp {
+  margin-top: 150px;
+}
+.document-card{
+  text-align: center;
+}
+.document-card-title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chip-style {
+  margin-top: 3%;
+  background-color: #F44336 !important;
+  cursor: none !important;
+}
+.chip-style a{
+  cursor: none !important;
+}
+.viewOneDocument, .profile, .all-users{
+  background-color: #FFF6EB;
+  margin: 3%;
+  padding: 10px;
+  text-align: center;
+}
+.profile-save{
+  margin-right: 2%;
+}
+.all-users{
+  margin: 0 auto;
+}
+.welcome-text{
+  font-size: 18px;
+}
+.navbar-item:hover{
+  background-color: #ccc;
+  color: #000 !important;
+}
+.update-role{
+  background-color: #EE6352;
+}
+.update-role:hover{
+  background-color: #ccc;
+  color: #000;
+}
+.doc-form .row{
+  margin: 15px 0px;
+}
+.my-documents-icon{
+  float: right !important;
+  margin-top: 1%;
+  margin-right: 8%;
+}
+.my-documents-text{
+  margin-left: 38%;
+  display: inline-block;
+}

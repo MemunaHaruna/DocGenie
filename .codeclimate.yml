@@ -1,0 +1,33 @@
+engines:
+  eslint:
+    enabled: true
+    channel: "eslint-3"
+    checks:
+      Similar code:
+        enabled: false
+      import/no-unresolved:
+        enabled: false
+      import/extensions:
+        enabled: false
+      max-len:
+        enabled: false
+      no-use-before-define:
+        enabled: false
+  duplication:
+    enabled: false
+    config:
+      languages:
+      - javascript
+ratings:
+  paths:
+  - "**.js"
+exclude_paths:
+- server/tests/
+- server/config/
+- client/tests/
+- node_modules/
+- server-dist
+- coverage
+- bin
+- .nyc_output
+- reports

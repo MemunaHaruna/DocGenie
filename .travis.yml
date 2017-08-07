@@ -1,0 +1,26 @@
+language: node_js
+node_js:
+  - 6
+after_success: npm run coverage
+services:
+  - postgresql
+before_script:
+  - psql -c "create database travis;" -U postgres
+  - npm install -g mocha
+  - npm install -g nyc
+  - npm install -g sequelize-cli
+script:
+  - npm test
+  - npm run compile-dist
+  - npm run build
+after_script:
+  - npm run coverage
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  api_key:
+    secure: lNiWqL4GSOkMy4d2csEk6RAffYUAdaR4xtIvHPEdiSGHAWB9uRDjphntKtrvoXmPjt/WRU0Gyv9T2Nc9H6YfJtTCSD1mmhtPGh0mRdWu8BJQ45wn71DuhLz8dKZu7/pRW7wjMmLLkyAt0vRtdiu9SLxXx+3zWuRe90pT+HUrutAoRdkupsLMueMVZKnEvnTWGE+UOK0r+O6qyxIJF2CnWZxby7qHU38/tcYfqaF42A6YnpVZGCXEnZxt2Sf9NW64cn10i6cyPqQ/GUaM7+jUVBHRJY86iqDk7pvOP99yXqv0jlI+cXzojklcQuM4t37c6mqojY39D48Z+ojrUSSoOdCKVCgR0UXR+mjk87c18rP+mQdHJFvxqldt3dOfDVIQ4IfoAm+dh31nRj9h8QLUp5LE1TGsEnu5Z0fZT15OrOTh1Tc+mQ9xJ/r+ICNFe989843OkCDj2ccvsfP/CkxYDQv8ZV5AomuF/j5ApB4rJN7XM/05QREG+gMUmDkFYjImZludMx0zUHSUf79t0xjINg04BdYSAF5uyT+8cCKBVIZLMkNG1qwV70TY6F0evvZCxDsxCB1UQywEuRMNkyZyX/XUv3Rxyb0GtTqc/VygwxkdPwd1+XuOL/7dLAzGbWjZLdQOFRbCUHEC5ckvKMuZZhRg2+dIqgpdNkthrRaC8hg=
+  app: docgenie
+  on:
+    repo: andela-mharuna/DocGenie
+    branch: staging

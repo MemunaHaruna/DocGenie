@@ -6,3 +6,8 @@ coverage
 .DS_Store
 .env
 bundle.js
+./coverage/index.html
+.coveralls.yml
+server-dist
+reports
+selenium-debug.log
