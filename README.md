@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/andela-mharuna/DocGenie.svg?branch=staging)](https://travis-ci.org/andela-mharuna/DocGenie)[![Coverage Status](https://coveralls.io/repos/github/andela-mharuna/DocGenie/badge.svg?branch=staging)](https://coveralls.io/github/andela-mharuna/DocGenie?branch=staging)[![Code Climate](https://codeclimate.com/github/andela-mharuna/DocGenie/badges/gpa.svg)](https://codeclimate.com/github/andela-mharuna/DocGenie)
+[![Build Status](https://travis-ci.org/andela-mharuna/DocGenie.svg?branch=staging)](https://travis-ci.org/andela-mharuna/DocGenie)[![Coverage Status](https://coveralls.io/repos/github/andela-mharuna/DocGenie/badge.png?branch=staging)](https://coveralls.io/github/andela-mharuna/DocGenie?branch=staging)[![Code Climate](https://codeclimate.com/github/andela-mharuna/DocGenie/badges/gpa.svg)](https://codeclimate.com/github/andela-mharuna/DocGenie)
 
 # DocGenie
 A document management system that allows users create documents, set access privileges for their documents, view other users' public and role-level documents, save private for-your-eyes-only documents and also edit or delete your saved documents.
