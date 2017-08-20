@@ -34,7 +34,7 @@ export class MyDocuments extends React.Component {
     const { limit, offset } = this.state;
     const userId = this.props.user.id;
     const url =
-     `/api/users/${userId}/documents/?limit=${limit}&offset=${offset}`;
+     `/api/v1/users/${userId}/documents/?limit=${limit}&offset=${offset}`;
     this.props.viewAllDocuments(url);
   }
 
@@ -59,7 +59,7 @@ export class MyDocuments extends React.Component {
     const offset = Math.ceil(selected * this.state.limit);
     this.setState({ offset }, () => {
       const url =
-      `/api/users/${userId}/documents/?limit=${limit}&offset=${offset}`;
+      `/api/v1/users/${userId}/documents/?limit=${limit}&offset=${offset}`;
       this.props.viewAllDocuments(url);
     });
   }
@@ -72,8 +72,7 @@ export class MyDocuments extends React.Component {
   render() {
     const { id: userId } = this.props.user;
     const url =
-     `/api/users/${userId}/documents/?
-     limit=${this.state.limit}&offset=${this.state.offset}`;
+     `/api/v1/users/${userId}/documents/?limit=${this.state.limit}&offset=${this.state.offset}`;
     return (
       <div className="dashboard-container">
         <div className="row my-documents">

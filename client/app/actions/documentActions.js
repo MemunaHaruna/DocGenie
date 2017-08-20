@@ -37,7 +37,7 @@ export const viewAllDocuments = (url) => {
 */
 export const createDocument = (document, url) => {
   return (dispatch) => {
-    return axios.post('/api/documents', document)
+    return axios.post('/api/v1/documents', document)
       .then((response) => {
         toastr.success('Document created!');
         dispatch({ type: CREATE_DOCUMENT,
@@ -74,7 +74,7 @@ export const changeCurrentDocument = (document) => {
 */
 export const editDocument = (document, url) => {
   return (dispatch) => {
-    return axios.put(`/api/documents/${document.id}`,
+    return axios.put(`/api/v1/documents/${document.id}`,
       document)
       .then((response) => {
         dispatch({ type: EDIT_DOCUMENT,
@@ -99,7 +99,7 @@ export const editDocument = (document, url) => {
 */
 export const deleteDocument = (document, paginationMetadata) => {
   return (dispatch) => {
-    return axios.delete(`/api/documents/${document.id}`)
+    return axios.delete(`/api/v1/documents/${document.id}`)
       .then(() => {
         dispatch(viewAllDocuments(paginationMetadata));
       }).catch((error) => {
@@ -125,7 +125,7 @@ export const searchForDocuments = (url) => {
 */
 export const findADocument = (id) => {
   return (dispatch) => {
-    return axios.get(`/api/documents/${id}`)
+    return axios.get(`/api/v1/documents/${id}`)
       .then((response) => {
         dispatch({ type: VIEW_ONE_DOCUMENT, document: { ...response.data } });
       }).catch((error) => {

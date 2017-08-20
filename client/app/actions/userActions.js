@@ -16,7 +16,7 @@ let errorMessage;
 */
 export const createUser = (user) => {
   return (dispatch) => {
-    return axios.post('/auth/api/users', user)
+    return axios.post('/auth/api/v1/users', user)
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: CREATE_USER, user: response.data.user });
@@ -40,7 +40,7 @@ export const createUser = (user) => {
  */
 export const signInUser = (user) => {
   return (dispatch) => {
-    return axios.post('/auth/api/users/login', user)
+    return axios.post('/auth/api/v1/users/login', user)
       .then((response) => {
         localStorage.setItem('token', response.data.token);
         dispatch({ type: SIGNIN_USER, user: response.data.user });
@@ -65,7 +65,7 @@ export const getUser = () => {
   const token = localStorage.getItem('token');
   const userId = jwt(token).userId;
   return (dispatch) => {
-    return axios.get(`/api/users/${userId}`)
+    return axios.get(`/api/v1/users/${userId}`)
       .then((response) => {
         dispatch({ type: CREATE_USER, user: response.data });
       }).catch((error) => {
@@ -97,7 +97,7 @@ export const updateProfile = (user, id) => {
   const userId = id || jwt(token).userId;
 
   return (dispatch) => {
-    return axios.put(`/api/users/${userId}`, user)
+    return axios.put(`/api/v1/users/${userId}`, user)
       .then((response) => {
         dispatch({ type: UPDATE_USER, user: response.data });
         toastr.success('Profile updated successfully!');
@@ -118,7 +118,7 @@ export const viewAllUsers = (paginationMetadata) => {
   const { limit, offset } = paginationMetadata;
 
   return (dispatch) => {
-    return axios.get(`/api/users/?limit=${limit}&offset=${offset}`)
+    return axios.get(`/api/v1/users/?limit=${limit}&offset=${offset}`)
       .then((response) => {
         dispatch({ type: VIEW_USERS,
           users: response.data.users,
@@ -138,7 +138,7 @@ export const viewAllUsers = (paginationMetadata) => {
 export const searchForUsers = (searchData) => {
   const { searchKey, limit } = searchData;
   const url =
-   `/api/search/users/?searchKey=${searchKey}&limit=${limit}`;
+   `/api/v1/search/users/?searchKey=${searchKey}&limit=${limit}`;
   return (dispatch) => {
     return axios.get(url)
       .then((response) => {
