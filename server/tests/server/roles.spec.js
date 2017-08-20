@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 const getUserToken = (data) => {
   return new Promise((resolve, reject) => {
     chai.request(server)
-      .post('/auth/api/users')
+      .post('/auth/api/v1/users')
       .set('Content-Type', 'application/json')
       .send(data)
       .end((error, response) => {
@@ -53,7 +53,7 @@ describe('Roles Controller', () => {
   it('should validate that a regular user cannot create a new role',
     (done) => {
       chai.request(server)
-        .get('/api/roles')
+        .get('/api/v1/roles')
         .set('authorization', userToken)
         .end((error, response) => {
           expect(response).to.have.status(403);
@@ -66,7 +66,7 @@ describe('Roles Controller', () => {
   it('should validate that a regular user cannot delete a role',
     (done) => {
       chai.request(server)
-        .delete('/api/roles/1')
+        .delete('/api/v1/roles/1')
         .set('authorization', userToken)
         .end((error, response) => {
           expect(response).to.have.status(403);
@@ -78,7 +78,7 @@ describe('Roles Controller', () => {
   it('should validate that a role that already exists cannot be re-created',
     (done) => {
       chai.request(server)
-        .post('/api/roles/')
+        .post('/api/v1/roles/')
         .set('authorization', adminToken)
         .send({ title: 'admin' })
         .end((error, response) => {
@@ -91,7 +91,7 @@ describe('Roles Controller', () => {
   it('should validate that an admin user can create a new role',
     (done) => {
       chai.request(server)
-        .post('/api/roles')
+        .post('/api/v1/roles')
         .set('authorization', adminToken)
         .send({ title: 'guest' })
         .end((error, response) => {
@@ -105,7 +105,7 @@ describe('Roles Controller', () => {
   it('should validate that an admin user can view all available roles',
     (done) => {
       chai.request(server)
-        .get('/api/roles')
+        .get('/api/v1/roles')
         .set('authorization', adminToken)
         .end((error, response) => {
           expect(response).to.have.status(200);
@@ -122,7 +122,7 @@ describe('Roles Controller', () => {
   it('should validate that an admin user can delete a role',
     (done) => {
       chai.request(server)
-        .delete('/api/roles/3')
+        .delete('/api/v1/roles/3')
         .set('authorization', adminToken)
         .end((error, response) => {
           expect(response).to.have.status(200);
@@ -134,7 +134,7 @@ describe('Roles Controller', () => {
   it('should validate that an admin user cannot delete a non-existent role',
     (done) => {
       chai.request(server)
-        .delete('/api/roles/5')
+        .delete('/api/v1/roles/5')
         .set('authorization', adminToken)
         .end((error, response) => {
           expect(response).to.have.status(404);

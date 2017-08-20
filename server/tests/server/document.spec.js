@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 const getUserToken = (data) => {
   return new Promise((resolve, reject) => {
     chai.request(server)
-      .post('/auth/api/users')
+      .post('/auth/api/v1/users')
       .set('Content-Type', 'application/json')
       .send(data)
       .end((error, response) => {
@@ -53,7 +53,7 @@ describe('Documents Controller', () => {
     (done) => {
       const { userId, content, title, access } = mockData.bulkDocuments[0];
       chai.request(server)
-        .get('/api/documents')
+        .get('/api/v1/documents')
         .set('authorization', adminToken)
         .end((error, response) => {
           expect(response).to.have.status(200);
@@ -75,7 +75,7 @@ describe('Documents Controller', () => {
     (done) => {
       const { title, content, access } = mockData.publicDocument;
       chai.request(server)
-        .post('/api/documents')
+        .post('/api/v1/documents')
         .set('authorization', adminToken)
         .send(mockData.publicDocument)
         .end((error, response) => {
@@ -91,7 +91,7 @@ describe('Documents Controller', () => {
   it('should NOT allow an admin user create a new document if content is empty',
     (done) => {
       chai.request(server)
-        .post('/api/documents')
+        .post('/api/v1/documents')
         .set('authorization', adminToken)
         .send(mockData.invalidDocument)
         .end((error, response) => {
@@ -105,7 +105,7 @@ describe('Documents Controller', () => {
   it('should allow admin create a private document', (done) => {
     const { title, access, content } = mockData.privateDocument;
     chai.request(server)
-      .post('/api/documents')
+      .post('/api/v1/documents')
       .set('authorization', adminToken)
       .send(mockData.privateDocument)
       .end((error, response) => {
@@ -121,7 +121,7 @@ describe('Documents Controller', () => {
   it('should validate that a created document has a published date', (done) => {
     const { title, content } = mockData.sampleDocument;
     chai.request(server)
-      .post('/api/documents')
+      .post('/api/v1/documents')
       .set('authorization', adminToken)
       .send(mockData.sampleDocument)
       .end((error, response) => {
@@ -139,7 +139,7 @@ describe('Documents Controller', () => {
       const { title, access, content } = mockData.roleDocument;
 
       chai.request(server)
-        .post('/api/documents')
+        .post('/api/v1/documents')
         .set('authorization', adminToken)
         .send(mockData.roleDocument)
         .end((error, response) => {
@@ -154,7 +154,7 @@ describe('Documents Controller', () => {
   it('should allow an admin user update their own document successfully',
     (done) => {
       chai.request(server)
-        .put('/api/documents/8')
+        .put('/api/v1/documents/8')
         .set('authorization', adminToken)
         .send({ title: 'Here we go', content: 'sample document updated' })
         .end((error, response) => {
@@ -170,7 +170,7 @@ describe('Documents Controller', () => {
   it('should return an error if admin tries to fetch a non-existent document',
     (done) => {
       chai.request(server)
-        .get('/api/documents/10')
+        .get('/api/v1/documents/10')
         .set('authorization', adminToken)
         .end((error, response) => {
           expect(response).to.have.status(404);
@@ -183,7 +183,7 @@ describe('Documents Controller', () => {
   it('should allow an admin user delete a document and see a message',
     (done) => {
       chai.request(server)
-        .delete('/api/documents/2')
+        .delete('/api/v1/documents/2')
         .set('authorization', adminToken)
         .end((error, response) => {
           expect(response).to.have.status(200);
@@ -197,7 +197,7 @@ describe('Documents Controller', () => {
       const { username, fullname, email } = mockData.publicDocument;
 
       chai.request(server)
-        .get('/api/search/documents/?searchKey=public')
+        .get('/api/v1/search/documents/?searchKey=public')
         .set('authorization', adminToken)
         .end((error, response) => {
           expect(response).to.have.status(200);
@@ -213,7 +213,7 @@ describe('Documents Controller', () => {
   // ***** Regular user ****
   it('should allow a regular user list ALL documents', (done) => {
     chai.request(server)
-      .get('/api/documents')
+      .get('/api/v1/documents')
       .set('authorization', userToken)
       .end((error, response) => {
         expect(response).to.have.status(200);
@@ -235,7 +235,7 @@ describe('Documents Controller', () => {
       const { title, access, content } = mockData.userPublicDocument;
 
       chai.request(server)
-        .post('/api/documents')
+        .post('/api/v1/documents')
         .set('authorization', userToken)
         .send(mockData.userPublicDocument)
         .end((error, response) => {
@@ -250,7 +250,7 @@ describe('Documents Controller', () => {
   it('should not allow a user create a new document if content is empty',
     (done) => {
       chai.request(server)
-        .post('/api/documents')
+        .post('/api/v1/documents')
         .set('authorization', userToken)
         .send(mockData.invalidDocument)
         .end((error, response) => {
@@ -266,7 +266,7 @@ describe('Documents Controller', () => {
       const { userId, title, access, content } = mockData.userPrivateDocument;
 
       chai.request(server)
-        .post('/api/documents')
+        .post('/api/v1/documents')
         .set('authorization', userToken)
         .send(mockData.userPrivateDocument)
         .end((error, response) => {
@@ -283,7 +283,7 @@ describe('Documents Controller', () => {
   it('should allow a regular user to update their own document successfully',
     (done) => {
       chai.request(server)
-        .put('/api/documents/3')
+        .put('/api/v1/documents/3')
         .set('authorization', userToken)
         .send({ title: '235 Ikorodu road', content: 'public user doc updated' })
         .end((error, response) => {
@@ -299,7 +299,7 @@ describe('Documents Controller', () => {
   it('should return an error if a user tries to fetch a non-existent document',
     (done) => {
       chai.request(server)
-        .get('/api/documents/16')
+        .get('/api/v1/documents/16')
         .set('authorization', userToken)
         .end((error, response) => {
           expect(response).to.have.status(404);
@@ -312,7 +312,7 @@ describe('Documents Controller', () => {
   it('should validate that a user cannot update another user\'s document',
     (done) => {
       chai.request(server)
-        .put('/api/documents/1')
+        .put('/api/v1/documents/1')
         .set('authorization', adminToken)
         .send({ title: 'newest update', content: 'Lorem Ipsum' })
         .end((error, response) => {
