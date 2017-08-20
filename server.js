@@ -8,20 +8,23 @@ const webpackConfigProd = require('./webpack.config.prod.js');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const webpackMiddleware = require('webpack-dev-middleware');
 
-let webpackConfig;
-if (process.env.NODE_ENV === 'production') {
-  webpackConfig = webpackConfigProd;
-} else {
-  webpackConfig = webpackConfigDev;
-}
+// let webpackConfig;
+// if (process.env.NODE_ENV === 'production') {
+//   webpackConfig = webpackConfigProd;
+// } else {
+//   webpackConfig = webpackConfigDev;
+// }
 
+const webpackConfig =
+  process.env.NODE_ENV === 'production' ? webpackConfigProd : webpackConfigDev;
 const compiler = webpack(webpackConfig);
 
 // This kills all running nodemon processes before restarting.
 // To resolve the listen EADDRINUSE error
 process.on('SIGUSR2', () => { process.exit(0); });
 
-const serverPath = process.env.NODE_ENV === 'production' ? 'server-dist' : 'server';
+const serverPath =
+  process.env.NODE_ENV === 'production' ? 'server-dist' : 'server';
 const authentication = require(`./${serverPath}/middleware/authentication`); // eslint-disable-line
 
 const dotenv = require('dotenv');
@@ -48,7 +51,6 @@ app.use(
   })
 );
 
-// Parse incoming request data (https://github.com/expressjs/body-parser)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -64,7 +66,7 @@ app.use(express.static(path.resolve(`${__dirname}/public`)));
 // Setup a default catch-all route that sends back a
 // welcome message in JSON format.
 
-app.get('*', function (request, response) {
+app.get('*', (request, response) => {
   response.sendFile(path.resolve(`${__dirname}/public/index.html`));
 });
 

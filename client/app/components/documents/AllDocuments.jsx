@@ -42,7 +42,7 @@ export class AllDocuments extends React.Component {
   */
   componentDidMount() {
     const { limit, offset } = this.state;
-    const url = `/api/documents/?limit=${limit}&offset=${offset}`;
+    const url = `/api/v1/documents/?limit=${limit}&offset=${offset}`;
     this.props.viewAllDocuments(url);
   }
 
@@ -56,7 +56,7 @@ export class AllDocuments extends React.Component {
     const selected = page.selected;
     const offset = Math.ceil(selected * this.state.limit);
     this.setState({ offset }, () => {
-      const url = `/api/documents/?limit=${limit}&offset=${offset}`;
+      const url = `/api/v1/documents/?limit=${limit}&offset=${offset}`;
       this.props.viewAllDocuments(url);
     });
   }
@@ -68,7 +68,7 @@ export class AllDocuments extends React.Component {
    */
   render() {
     const url =
-     `/api/documents/?limit=${this.state.limit}&offset=${this.state.offset}`;
+     `/api/v1/documents/?limit=${this.state.limit}&offset=${this.state.offset}`;
     return (
       <div id="main-dash" className="dashboard-container">
         <h4 className="center-align">ALL DOCUMENTS</h4>

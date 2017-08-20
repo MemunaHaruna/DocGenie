@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 const getUserToken = (data) => {
   return new Promise((resolve, reject) => {
     chai.request(server)
-      .post('/auth/api/users')
+      .post('/auth/api/v1/users')
       .set('Content-Type', 'application/json')
       .send(data)
       .end((error, response) => {
@@ -54,7 +54,7 @@ describe('Users', () => {
     (done) => {
       const { email, password, username, roleId } = mockData.firstUser;
       chai.request(server)
-        .post('/auth/api/users/login')
+        .post('/auth/api/v1/users/login')
         .set('Accept', 'application/json')
         .send({ email, password })
         .end((error, response) => {
@@ -70,7 +70,7 @@ describe('Users', () => {
     (done) => {
       const { email, password } = mockData.thirdUser;
       chai.request(server)
-        .post('/auth/api/users/login')
+        .post('/auth/api/v1/users/login')
         .set('Accept', 'application/json')
         .send({ email, password })
         .end((error, response) => {
@@ -82,7 +82,7 @@ describe('Users', () => {
   it('should not be able to access any authenticated route without a token',
     (done) => {
       chai.request(server)
-        .get('/api/users')
+        .get('/api/v1/users')
         .end((error, response) => {
           expect(response).to.have.status(401);
           expect(response.body).to.eql({ message:
@@ -93,7 +93,7 @@ describe('Users', () => {
 
   it('should be able to update their account details ', (done) => {
     chai.request(server)
-      .put('/api/users/2')
+      .put('/api/v1/users/2')
       .set('authorization', userToken)
       .send({ fullname: 'Mikhail Stanislaski', email: 'mikhail.s@gmail.com' })
       .end((error, response) => {
@@ -108,7 +108,7 @@ describe('Users', () => {
   it('should be able to fetch all their OWN documents', (done) => {
     const { title, content } = mockData.bulkDocuments[0];
     chai.request(server)
-      .get('/api/users/2/documents')
+      .get('/api/v1/users/2/documents')
       .set('authorization', userToken)
       .end((error, response) => {
         expect(response).to.have.status(200);
@@ -125,7 +125,7 @@ describe('Users', () => {
   it('should be able to search for a particular user', (done) => {
     const { username, fullname } = mockData.firstUser;
     chai.request(server)
-      .get('/api/search/users/?searchKey=admin01')
+      .get('/api/v1/search/users/?searchKey=admin01')
       .set('authorization', adminToken)
       .end((error, response) => {
         expect(response).to.have.status(200);
@@ -140,7 +140,7 @@ describe('Users', () => {
   it('should validate that a regular user can delete their own account',
     (done) => {
       chai.request(server)
-        .delete('/api/users/2')
+        .delete('/api/v1/users/2')
         .set('authorization', userToken)
         .end((error, response) => {
           expect(response).to.have.status(200);
@@ -152,7 +152,7 @@ describe('Users', () => {
   it('should validate that a user cannot view a non-existent user',
     (done) => {
       chai.request(server)
-        .get('/api/users/56')
+        .get('/api/v1/users/56')
         .set('authorization', userToken)
         .end((error, response) => {
           expect(response).to.have.status(404);

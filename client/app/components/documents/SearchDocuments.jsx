@@ -17,9 +17,9 @@ export const SearchDocuments = (props) => {
     const { limit, offset } = props;
     let url;
     if (searchKey) {
-      url = `/api/search/documents/?searchKey=${searchKey}&limit=${limit}`;
+      url = `/api/v1/search/documents/?searchKey=${searchKey}&limit=${limit}`;
     } else {
-      url = `api/documents/?limit=${limit}&offset=${offset}`;
+      url = `api/v1/documents/?limit=${limit}&offset=${offset}`;
     }
     props.searchForDocuments(url);
   };
