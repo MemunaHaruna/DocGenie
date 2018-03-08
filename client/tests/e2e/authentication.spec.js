@@ -95,8 +95,8 @@ module.exports = {
      browser
        .url('http://localhost:5000')
        .waitForElementVisible('body', 5000)
-       .setValue('input[name=email]', 'muna2@muna2.com')
-       .setValue('input[name=password]', 'muna2muna2')
+       .setValue('input[name=email]', 'admin@gmail.com')
+       .setValue('input[name=password]', 'adminadmin')
        .pause(1000)
        .click('#signin-button')
        .waitForElementVisible('div[id="main-dash"]', 5000)
