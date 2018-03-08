@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/memunaharuna/DocGenie.svg?branch=staging)](https://travis-ci.org/memunaharuna/DocGenie)[![Coverage Status](https://coveralls.io/repos/github/memunaharuna/DocGenie/badge.png?branch=staging)](https://coveralls.io/github/memunaharuna/DocGenie?branch=staging)[![Code Climate](https://codeclimate.com/github/memunaharuna/DocGenie/badges/gpa.svg)](https://codeclimate.com/github/memunaharuna/DocGenie)
+[![Build Status](https://travis-ci.org/MemunaHaruna/DocGenie.svg?branch=staging)](https://travis-ci.org/MemunaHaruna/DocGenie)[![Coverage Status](https://coveralls.io/repos/github/MemunaHaruna/DocGenie/badge.svg?branch=staging)](https://coveralls.io/github/MemunaHaruna/DocGenie?branch=staging)[![Code Climate](https://codeclimate.com/github/MemunaHaruna/DocGenie/badges/gpa.svg)](https://codeclimate.com/github/MemunaHaruna/DocGenie)
 
 # DocGenie
 A document management system that allows users create documents, set access privileges for their documents, view other users' public and role-level documents, save private for-your-eyes-only documents and also edit or delete your saved documents.
