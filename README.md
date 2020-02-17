@@ -134,6 +134,6 @@ You can find the full API documentation here: <https://memunaharuna.github.io/sl
 * Work on a new feature and push to your remote branch: `git push origin your-branch-name`
 * Raise a pull request to the staging branch of this repo.
 * For the branch-naming, commit messages and pull request conventions used for this project, kindly check the wiki
-of this repo here: <https://github.com/andela-mharuna/DocGenie/wiki>
+of this repo here: <https://github.com/MemunaHaruna/DocGenie/wiki>
 * This project uses javascript ES6 and follows the airbnb style-guide: <https://github.com/airbnb/javascript>
 

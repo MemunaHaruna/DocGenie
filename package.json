@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andela-mharuna/DocGenie.git"
+    "url": "git+https://github.com/MemunaHaruna/DocGenie.git"
   },
   "keywords": [
     "document docgenie",
@@ -24,9 +24,9 @@
   "author": "memuna haruna",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/andela-mharuna/DocGenie/issues"
+    "url": "https://github.com/MemunaHaruna/DocGenie/issues"
   },
-  "homepage": "https://github.com/andela-mharuna/DocGenie#readme",
+  "homepage": "https://github.com/MemunaHaruna/DocGenie#readme",
   "dependencies": {
     "axios": "^0.16.2",
     "babel": "^6.23.0",
