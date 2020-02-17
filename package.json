@@ -7,7 +7,7 @@
     "build": "webpack -p",
     "compile-dist": "rm -rf server-dist && NODE_ENV=production babel ./server/ -d ./server-dist -D",
     "start:dev": "babel-node runMigrations.js && NODE_ENV=development & nodemon server.js --exec babel-node",
-    "start": "npm run compile-dist && NODE_ENV=production node runMigrations.js && NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node runMigrations.js && NODE_ENV=production node server.js",
     "debug": "nodemon --inspect server.js",
     "test": "NODE_ENV=test PORT=3333 nyc --reporter=html --reporter=text mocha -r mock-local-storage --compilers js:babel-core/register --colors ./server/tests/*/*.spec.js ./client/tests/*/*.spec.js --require ./server/tests/init.js --timeout 20000",
     "e2e-test": "nightwatch",
