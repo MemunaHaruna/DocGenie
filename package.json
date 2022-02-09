@@ -54,7 +54,7 @@
     "jsonwebtoken": "^7.4.3",
     "jwt-decode": "^2.2.0",
     "morgan": "^1.9.1",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "pg": "^6.4.2",
     "pg-hstore": "^2.3.3",
     "prop-types": "^15.7.2",
