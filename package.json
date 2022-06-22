@@ -50,7 +50,7 @@
     "file-loader": "^0.11.2",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
-    "jsdom": "^11.0.0",
+    "jsdom": "^16.5.0",
     "jsonwebtoken": "^7.4.3",
     "jwt-decode": "^2.2.0",
     "morgan": "^1.9.1",
